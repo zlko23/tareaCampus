@@ -1,1 +1,1 @@
-Tarea
+tareaEnClase
