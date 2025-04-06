@@ -16,16 +16,18 @@ class Tarea {
   }
 
   getCosto() {
+    let valor = 1000;
+
     if (this.complejidad.complejidad() === "minima") {
-      return 100 * this.getDuracion();
+      return Math.round(valor * this.getDuracion());
     } 
     else if (this.complejidad.complejidad() === "media") {
-      return this.getDuracion() >= 5
-        ? 200 * this.getDuracion()
-        : 150 * this.getDuracion();
+      return Math.round(valor * this.getDuracion() * 1.05);
     } 
     else if (this.complejidad.complejidad() === "maxima") {
-      return 300 * this.getDuracion() + 500;
+      return this.getDuracion() >= 10
+      ? Math.round(valor * this.getDuracion() * 1.07)
+      : Math.round(valor * this.getDuracion() * 1.07);
     }
     return 0;
   }
@@ -57,16 +59,18 @@ class TareaCompuesta {
 
   getCosto() {
     let costo = 0;
+    let valor = 1000;
 
     if (this.complejidad.complejidad() === "minima") {
-      costo = 100 * this.duracion;
+      return Math.round(valor * this.getDuracion());
     } 
     else if (this.complejidad.complejidad() === "media") {
-      costo =
-        this.duracion >= 5 ? 200 * this.duracion : 150 * this.duracion;
+      return Math.round(valor * this.getDuracion() * 1.05);
     } 
     else if (this.complejidad.complejidad() === "maxima") {
-      costo = 300 * this.duracion + 500 * this.subtareas.length;
+      return this.getDuracion() >= 10
+      ? Math.round(valor * this.getDuracion() * 1.07)
+      : Math.round(valor * this.getDuracion() * 1.07 + (1000 * this.subtareas.length));
     }
     return costo;
   }
